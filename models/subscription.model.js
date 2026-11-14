@@ -27,7 +27,10 @@ const subscriptionSchema = new mongoose.Schema(
       type: String,
       required: [true, "Subscription category is required"],
       enum: [
-        "sports, news, technology ,entertainment",
+        "sports",
+        "news",
+        "technology",
+        "entertainment",
         "productivity",
         "education",
         "health",
@@ -74,7 +77,7 @@ const subscriptionSchema = new mongoose.Schema(
 );
 
 // Auto-calculate renewal date if missing
-subscriptionSchema.pre("save", function (next) {
+subscriptionSchema.pre("save", function () {
   if (!this.renewalDate) {
     const renewalPeriods = {
       daily: 1,
@@ -92,7 +95,6 @@ subscriptionSchema.pre("save", function (next) {
   if (this.renewalDate < new Date()) {
     this.status = "expired";
   }
-  next();
 });
 
 const Subscription = mongoose.model("Subscription", subscriptionSchema);
