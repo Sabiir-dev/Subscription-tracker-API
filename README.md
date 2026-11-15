@@ -1,4 +1,4 @@
-# SubDub — Subscription Tracker API
+# Subscription Tracker API
 
 SubDub is a Node.js REST API for managing subscriptions and reminding users about upcoming renewals. It uses MongoDB to store accounts and subscriptions, JWTs to protect account actions, and Upstash Workflow to schedule reminder steps. Reminder emails are sent through Nodemailer.
 
